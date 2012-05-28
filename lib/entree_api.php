@@ -21,21 +21,35 @@ class EntreeAPI {
     } else {
       curl_setopt($this->ch, CURLOPT_URL, $this->endpoint . '/api/' . $controller . '/' . $action . '.' . $format);
     }
-    
+
     $response = curl_exec($this->ch);
-    $query = mysql_query("SELECT `response` FROM `apicache` WHERE `controller`='" . $controller . "' AND `action`='" . $action . "' AND `format`='" . $format . "'");
     
     if($response === false) {
       // uit de api cache!
-      $query = mysql_query("SELECT `response` FROM `apicache` WHERE `controller`='" . $controller . "' AND `action`='" . $action . "' AND `format`='" . $format . "'");
+      $query = mysql_query("SELECT `response` FROM `api_inbox` WHERE `controller`='" . $controller . "' AND `action`='" . $action . "' AND `format`='" . $format . "'");
       $response = mysql_result($query, 0);
     } else {
       // response opslaan/updaten
-      if(mysql_num_rows($query) === 0) {
-        mysql_query("INSERT INTO `apicache` (`controller`, `action`, `format`) VALUES ('" . $controller . "', '" . $action . "', '" . $format . "')");
-      } else {
-        mysql_query("UPDATE `apicache` SET `response`='" . $response . "' WHERE `controller`='" . $controller . "' AND `action`='" . $action . "' AND `format`='" . $format . "'");
-      }
+      mysql_query("REPLACE `api_inbox` (`controller`, `action`, `format`) VALUES ('" . $controller . "', '" . $action . "', '" . $format . "')");
+    }
+    
+    return $response;
+  }
+  
+  function post($data, $controller, $action = '', $format = 'json') {
+    if($action === '') {
+      curl_setopt($this->ch, CURLOPT_URL, $this->endpoint . '/api/' . $controller . '.' . $format);
+    } else {
+      curl_setopt($this->ch, CURLOPT_URL, $this->endpoint . '/api/' . $controller . '/' . $action . '.' . $format);
+    }
+    
+    curl_setopt($this->ch, CURLOPT_POST, 1);
+    curl_setopt($this->ch, CURLOPT_POSTFIELDS, $data);
+    $response = curl_exec($this->ch);
+    
+    if($response == false) {
+      // cache de opdracht!
+      mysql_query("INSERT INTO `api_outbux` (`controller`, `action`, `format`, `date`) VALUES ('" . $controller . "', '" . $action . "', '" . $format . "', '" . serialize($data) . "')");
     }
     
     return $response;
@@ -46,4 +60,5 @@ class EntreeAPI {
   }
   
 }
-?>
+
+// EOF
