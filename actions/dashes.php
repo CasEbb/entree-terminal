@@ -149,7 +149,11 @@ $('#snelstrepen').click(function() {
   }, 'json');
   
   if(usersAreSelected()) {
-    $('#kachingplayer').get(0).play();
+    if(users.length == 1) {
+      $('#remyplayer').get(0).play();
+    } else {
+      $('#kachingplayer').get(0).play();
+    }
   }
   resetDashes();
 });
@@ -173,7 +177,11 @@ $('.product').click(function() {
     }
   }, 'json');
 
-  $('#kachingplayer').get(0).play();
+  if(users.length == 1) {
+    $('#remyplayer').get(0).play();
+  } else {
+    $('#kachingplayer').get(0).play();
+  }
   resetDashes();
   $('#menu-product').hide('slow');
   $('#products').hide('slow', function() {
