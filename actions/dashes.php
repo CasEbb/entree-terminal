@@ -42,7 +42,7 @@ foreach($persons as $person) {
 
   echo "    <td>";
   echo "      <div id=\"persoon-".$person->id."\" class=\"person block\">";
-  echo "        <img src=\"assets/images/faces/".$person->id.".jpg\" width=\"64\" height=\"64\"><br>";
+  echo "        <img src=\"assets/images/faces/".$person->id.".jpg\" width=\"128\" height=\"128\"><br>";
   echo "        ".$person->display_name;
   if($person->id == $top_drinker->id) echo "        <div class=\"topdrinker\"><img src=\"assets/images/topdrinker.png\" width=\"32\" height=\"32\" alt=\"Bierkoning\"></div>";
   if($dashes[$person->id]) { echo "        <div class=\"counter\">".$dashes[$person->id]."</div>"; } else { echo "        <div class=\"counter hidden\">0</div>"; }
