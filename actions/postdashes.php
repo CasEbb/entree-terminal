@@ -12,7 +12,7 @@ if($_COOKIE['date'] != date('d-m-Y') && date('G') >= 12) {
 $fp = fopen('log.txt', 'a');
 fputs($fp, "| ".date('d/m')." | ".date('H:i')."   | =============================\r\n");
 
-$ch = curl_init('http://streeplijst.huizeentree.nl/dashes.json');
+$ch = curl_init('http://streeplijst.huizeentree.nl/api/dashes.json');
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
 curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 1);
 

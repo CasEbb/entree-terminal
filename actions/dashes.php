@@ -10,10 +10,6 @@ $dashes = unserialize($_COOKIE['dashes']);
 <!-- HTML -->
 <div id="menu-person" class="sidebar">
   <ul>
-	<li id="gaaay">
-	  <img src="assets/images/buttons/gaaay.png" width="64" height="64">
-	  <div>Hah, gay!</div>
-	</li>
     <li id="snelstrepen">
       <img src="assets/images/buttons/snelstrepen.png" width="64" height="64">
       Snelstrepen<br>
