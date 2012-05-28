@@ -10,6 +10,10 @@ $dashes = unserialize($_COOKIE['dashes']);
 <!-- HTML -->
 <div id="menu-person" class="sidebar">
   <ul>
+    <li id="ping">
+      <img src="assets/images/buttons/ping.png" width="64" height="64">
+      <div>Ping!</div>
+    </li>
     <li id="snelstrepen">
       <img src="assets/images/buttons/snelstrepen.png" width="64" height="64">
       Snelstrepen<br>
@@ -85,7 +89,7 @@ foreach($products as $product) {
 <audio src="assets/sounds/ping.wav" id="pingplayer"></audio>
 <audio src="assets/sounds/kaching.wav" id="kachingplayer"></audio>
 <audio src="assets/sounds/cuckoo.wav" id="cuckooplayer"></audio>
-<audio src="assets/sounds/gaaay.wav" id="gaaayplayer"></audio>
+<audio src="assets/sounds/remy.wav" id="remyplayer"></audio>
 <!-- SCRIPT -->
 <script type="text/javascript">
 var users = [];
@@ -186,14 +190,8 @@ $('#product-back').click(function() {
   });
 });
 
-$('#gaaay').click(function() {
-  $('#gaaayplayer').get(0).play();
-});
-
-$(document).keypress(function(event) {
-  if(event.which == 112) {
-    $('#pingplayer').get(0).play();
-  }
+$('#ping').click(function() {
+  $('#pingplayer').get(0).play();
 });
 </script>
 
