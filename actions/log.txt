@@ -1,4 +1,0 @@
-| 28/05 | 19:09   | =============================
-| 28/05 | 19:10   | =============================
-| extern | pushed  | streepje(?)[1, 1] gepushed
-| extern | pushed  | streepje(?)[2, 1] gepushed
