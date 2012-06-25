@@ -6,7 +6,7 @@ function switchPage(page) {
   // huidige pagina weg
   $('#content').fadeOut('slow', function() { 
     // laden
-    $.get('actions/'+page+'.php', function(data) {
+    $.get('index.php?view='+page, function(data) {
       $('#content').html(data);
       $('#content').fadeIn();
     });
